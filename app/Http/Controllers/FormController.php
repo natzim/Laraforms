@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
 use App\Form;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FormFormRequest;
 
 class FormController extends Controller {
 
@@ -31,11 +33,16 @@ class FormController extends Controller {
     /**
      * Store a newly created form in storage.
      */
-    public function store()
+    public function store(FormFormRequest $request)
     {
         $form = new Form;
 
-        // Validate, then create, then return to new form
+        $form->title       = $request->title;
+        $form->description = $request->description;
+
+        $form->user()->associate(Auth::user());
+
+        $form->save();
     }
 
     /**

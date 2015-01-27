@@ -18,4 +18,8 @@
         {!! Form::submit('Create form', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
+
+    @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
 @stop
