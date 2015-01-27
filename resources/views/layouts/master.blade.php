@@ -28,8 +28,13 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="">Sign in</a></li>
-                    <li><a href="">Sign up</a></li>
+                    @if (Auth::check())
+                        <li><a href="">Dashboard</a></li>
+                        <li><a href="">Sign out</a></li>
+                    @else
+                        <li><a href="">Sign in</a></li>
+                        <li><a href="">Sign up</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
