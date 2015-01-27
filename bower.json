@@ -1,3 +1,6 @@
 {
-    "name": "Laraforms"
+  "name": "Laraforms",
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
 }
