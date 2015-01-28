@@ -20,7 +20,7 @@ class UserController extends Controller {
      */
     public function create()
     {
-        return view('users.create');
+        return view('user.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class UserController extends Controller {
     {
         $user = User::findOrFail($id);
 
-        return view('users.show', ['user' => $user]);
+        return view('user.show', ['user' => $user]);
     }
 
     /**
@@ -86,7 +86,7 @@ class UserController extends Controller {
 
     public function signIn()
     {
-        return view('users.signin');
+        return view('user.signin');
     }
 
     public function authenticate()
