@@ -10,6 +10,15 @@ Route::get('/', ['as' => 'index', function ()
     return view('index');
 }]);
 
+Route::get('dashboard', [
+    'as'         => 'dashboard',
+    'middleware' => 'auth',
+    function ()
+    {
+        return view('dashboard');
+    }
+]);
+
 /**
  * Form REST
  */
@@ -31,7 +40,7 @@ Route::get('user/signin', [
 ]);
 
 Route::post('user/authenticate', [
-    'as' => 'user.authenticate',
+    'as'   => 'user.authenticate',
     'uses' => 'UserController@authenticate'
 ]);
 

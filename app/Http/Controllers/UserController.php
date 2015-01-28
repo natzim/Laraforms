@@ -41,7 +41,7 @@ class UserController extends Controller {
 
         Auth::login($user);
 
-        return redirect()->route('index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -96,7 +96,7 @@ class UserController extends Controller {
             'password' => Input::get('password')
         ]))
         {
-            return redirect()->route('index');
+            return response()->redirectToIntended(route('dashboard'));
         }
         else
         {
