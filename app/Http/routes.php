@@ -11,3 +11,5 @@ Route::get('/', function ()
 });
 
 Route::resource('form', 'FormController');
+
+Route::resource('user', 'UserController');
