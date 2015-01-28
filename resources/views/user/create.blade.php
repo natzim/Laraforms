@@ -23,6 +23,11 @@
             {!! Form::password('password', ['class' => 'form-control']) !!}
         </div>
 
+        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+            {!! Form::label('password_confirmation', 'Confirm Password') !!}
+            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+        </div>
+
         @if ($errors->has('password'))
             <div class="alert alert-danger" role="alert">
                 @foreach ($errors->get('password') as $error)
@@ -34,4 +39,6 @@
         {!! Form::submit('Sign up', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
+
+    <p>Already have an account? How about <a href="{{ route('user.signin') }}">signing in</a>?</p>
 @stop

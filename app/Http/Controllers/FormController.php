@@ -17,7 +17,7 @@ class FormController extends Controller {
      */
     public function index()
     {
-        return view('forms.index');
+        return view('form.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class FormController extends Controller {
      */
     public function create()
     {
-        return view('forms.create');
+        return view('form.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class FormController extends Controller {
     {
         $form = Form::findOrFail($id);
 
-        return view('forms.show', ['form' => $form]);
+        return view('form.show', ['form' => $form]);
     }
 
     /**
@@ -70,7 +70,7 @@ class FormController extends Controller {
     {
         $form = Form::findOrFail($id);
 
-        return view('forms.edit', ['form' => $form]);
+        return view('form.edit', ['form' => $form]);
     }
 
     /**

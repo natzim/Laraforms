@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+    <h2>Sign in</h2>
+
     {!! Form::open(['route' => 'user.authenticate']) !!}
 
         <div class="form-group">
@@ -16,4 +18,6 @@
         {!! Form::submit('Sign in', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
+
+    <p>Haven't got an account? How about <a href="{{ route('user.create') }}">signing up</a>?</p>
 @stop

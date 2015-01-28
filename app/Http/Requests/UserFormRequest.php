@@ -10,7 +10,7 @@ class UserFormRequest extends FormRequest {
     {
         return [
             'name'     => 'required|alpha_dash|min:3|max:20|unique:users',
-            'password' => 'required'
+            'password' => 'required|confirmed'
         ];
     }
 
