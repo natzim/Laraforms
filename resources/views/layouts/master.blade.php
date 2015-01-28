@@ -23,16 +23,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Laraforms</a>
+                <a class="navbar-brand" href="{{ route('index') }}">Laraforms</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('user.signout') }}">Sign out</a></li>
+                        <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li><a href="{{ route('user.signout') }}"><i class="fa fa-sign-out"></i> Sign out</a></li>
                     @else
-                        <li><a href="{{ route('user.signin') }}">Sign in</a></li>
+                        <li><a href="{{ route('user.signin') }}"><i class="fa fa-sign-in"></i> Sign in</a></li>
                         <li><a href="{{ route('user.create') }}">Sign up</a></li>
                     @endif
                 </ul>
