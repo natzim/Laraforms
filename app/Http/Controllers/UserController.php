@@ -91,10 +91,12 @@ class UserController extends Controller {
 
     public function authenticate()
     {
+        $remember = Input::get('remember') ? true : false;
+
         if (Auth::attempt([
             'name'     => Input::get('name'),
             'password' => Input::get('password')
-        ]))
+        ], $remember))
         {
             return response()->redirectToIntended(route('dashboard'));
         }

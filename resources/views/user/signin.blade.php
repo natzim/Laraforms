@@ -15,6 +15,14 @@
             {!! Form::password('password', ['class' => 'form-control']) !!}
         </div>
 
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    {!! Form::checkbox('remember') !!} Remember me
+                </label>
+            </div>
+        </div>
+
         {!! Form::submit('Sign in', ['class' => 'btn btn-primary']) !!}
 
     {!! Form::close() !!}
