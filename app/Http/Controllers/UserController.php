@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserFormRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
 
@@ -81,6 +82,26 @@ class UserController extends Controller {
         Auth::logout();
 
         return redirect()->route('index');
+    }
+
+    public function signIn()
+    {
+        return view('users.signin');
+    }
+
+    public function authenticate()
+    {
+        if (Auth::attempt([
+            'name'     => Input::get('name'),
+            'password' => Input::get('password')
+        ]))
+        {
+            return redirect()->route('index');
+        }
+        else
+        {
+            return redirect()->route('user.signin');
+        }
     }
 
     /**

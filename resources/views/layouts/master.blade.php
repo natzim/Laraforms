@@ -32,7 +32,7 @@
                         <li><a href="">Dashboard</a></li>
                         <li><a href="{{ route('user.signout') }}">Sign out</a></li>
                     @else
-                        <li><a href="">Sign in</a></li>
+                        <li><a href="{{ route('user.signin') }}">Sign in</a></li>
                         <li><a href="{{ route('user.create') }}">Sign up</a></li>
                     @endif
                 </ul>
