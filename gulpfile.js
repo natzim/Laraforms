@@ -9,6 +9,9 @@ elixir(function (mix) {
     ], assetsDir, 'public/js/app.min.js');
 
     mix.styles([
-        'bootstrap/dist/css/bootstrap.min.css'
+        'bootstrap/dist/css/bootstrap.min.css',
+        'fontawesome/css/font-awesome.min.css'
     ], assetsDir, 'public/css/style.min.css');
+
+    mix.copy('resources/assets/fontawesome/fonts', 'public/fonts');
 });

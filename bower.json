@@ -1,6 +1,7 @@
 {
   "name": "Laraforms",
   "dependencies": {
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "fontawesome": "~4.3.0"
   }
 }
