@@ -12,7 +12,7 @@ class User extends Model implements AuthenticatableContract {
 
     public function forms()
     {
-        return $this->hasMany('Form');
+        return $this->hasMany('App\Form');
     }
 
 }

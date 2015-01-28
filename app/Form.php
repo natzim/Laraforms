@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,12 +15,12 @@ class Form extends Model {
 
     public function elements()
     {
-        return $this->hasMany('FormElement');
+        return $this->hasMany('App\FormElement');
     }
 
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User');
     }
 
 }

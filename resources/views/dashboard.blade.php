@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+<?php $forms = Auth::user()->forms; ?>
+
 @section('content')
     <h2>Dashboard</h2>
 
@@ -7,8 +9,12 @@
 
     <h3>Your forms</h3>
 
-    @foreach (Auth::user()->forms as $form)
-        {{ $form->title }}
-        {{ $form->description }}
-    @endforeach
+    @if ($forms->count() > 0)
+        @foreach ($forms as $form)
+            {{ $form->title }}
+            {{ $form->description }}
+        @endforeach
+    @else
+        <p>Looks like you haven't created any forms! How about <a href="{{ route('form.create') }}">creating a new form</a>?</p>
+    @endif
 @stop

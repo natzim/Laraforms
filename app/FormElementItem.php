@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,7 +9,7 @@ class FormElementItem extends Model {
 
     public function element()
     {
-        return $this->belongsTo('FormElement');
+        return $this->belongsTo('App\FormElement');
     }
 
 }
