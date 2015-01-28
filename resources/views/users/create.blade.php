@@ -6,8 +6,8 @@
     {!! Form::open(['route' => 'user.store']) !!}
 
         <div class="form-group">
-            {!! Form::label('username', 'Username') !!}
-            {!! Form::text('username', null, ['class' => 'form-control']) !!}
+            {!! Form::label('name', 'Username') !!}
+            {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">

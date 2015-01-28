@@ -1,76 +1,98 @@
 <?php namespace App\Http\Controllers;
 
+use App\User;
+use Auth;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\FormFormRequest;
-use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\UserFormRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
 
-	/**
-	 * Show the form for creating a new user
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function create()
-	{
-		return view('users.create');
-	}
+    /**
+     * Show the form for creating a new user
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('users.create');
+    }
 
-	/**
-	 * Store a newly created user in storage
-	 */
-	public function store(UserFormRequest $request)
-	{
-		$user = new User;
+    /**
+     * Store a newly created user in storage
+     *
+     * @param UserFormRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(UserFormRequest $request)
+    {
+        $user = new User;
 
-		$user->username = $request->username;
-		$user->password = Hash::make($request->password);
+        $user->name     = $request->name;
+        $user->password = Hash::make($request->password);
 
-		$user->save();
-	}
+        $user->save();
 
-	/**
-	 * Display the specified user
-	 *
-	 * @param $id
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function show($id)
-	{
-		$user = User::findOrFail($id);
+        Auth::login($user);
 
-		return view('users.show', ['user' => $user]);
-	}
+        return redirect()->route('index');
+    }
 
-	/**
-	 * Update the specified user in storage
-	 *
-	 * @param $id
-	 */
-	public function update($id)
-	{
-		$user = User::findOrFail($id);
+    /**
+     * Display the specified user
+     *
+     * @param $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
 
-		// Save stuff
+        return view('users.show', ['user' => $user]);
+    }
 
-		$user->save();
-	}
+    /**
+     * Update the specified user in storage
+     *
+     * @param $id
+     */
+    public function update($id)
+    {
+        $user = User::findOrFail($id);
 
-	/**
-	 * Remove the specified user from storage
-	 *
-	 * @param $id
-	 */
-	public function destroy($id)
-	{
-		$user = User::findOrFail($id);
+        // Save stuff
 
-		$user->delete();
-	}
+        $user->save();
+    }
+
+    /**
+     * Attempt to sign a user out from the application
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function signOut()
+    {
+        Auth::logout();
+
+        return redirect()->route('index');
+    }
+
+    /**
+     * Remove the specified user from storage
+     *
+     * @param $id
+     */
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+    }
 
 }

@@ -30,10 +30,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::check())
                         <li><a href="">Dashboard</a></li>
-                        <li><a href="">Sign out</a></li>
+                        <li><a href="{{ route('user.signout') }}">Sign out</a></li>
                     @else
                         <li><a href="">Sign in</a></li>
-                        <li><a href="">Sign up</a></li>
+                        <li><a href="{{ route('user.create') }}">Sign up</a></li>
                     @endif
                 </ul>
             </div>

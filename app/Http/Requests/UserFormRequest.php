@@ -9,7 +9,7 @@ class UserFormRequest extends FormRequest {
     public function rules()
     {
         return [
-            'username' => 'required|alpha_dash|min:3|max:20',
+            'name'     => 'required|alpha_dash|min:3|max:20',
             'password' => 'required'
         ];
     }
