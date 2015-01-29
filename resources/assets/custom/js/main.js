@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $.material.init();
+});
+
 var addFormElement    = '.btn-add-form-element',
     removeFormElement = '.btn-remove-form-element',
     $formElementArea  = $('.form-element-area');
