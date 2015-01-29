@@ -45,3 +45,11 @@ Route::post('user/authenticate', [
 ]);
 
 Route::resource('user', 'UserController');
+
+/**
+ * Ajax views
+ */
+Route::get('snippets/form/element/new', function ()
+{
+    return view('snippets.form.element.new');
+});

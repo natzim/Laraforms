@@ -9,7 +9,8 @@ class FormFormRequest extends FormRequest {
     public function rules()
     {
         return [
-            'title' => 'required|max:255'
+            'title'       => 'required|max:100',
+            'description' => 'max:5000'
         ];
     }
 

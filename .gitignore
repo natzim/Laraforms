@@ -1,6 +1,6 @@
 /vendor
 .env
 
-/resources/assets/*
+/resources/assets/bower/*
 /node_modules
 /.idea/

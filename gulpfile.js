@@ -4,14 +4,16 @@ var assetsDir = 'resources/assets';
 
 elixir(function (mix) {
     mix.scripts([
-        'jquery/dist/jquery.min.js',
-        'bootstrap/dist/js/bootstrap.min.js'
+        'bower/jquery/dist/jquery.min.js',
+        'bower/bootstrap/dist/js/bootstrap.min.js',
+        'custom/js/main.js'
     ], assetsDir, 'public/js/app.min.js');
 
     mix.styles([
-        'bootstrap/dist/css/bootstrap.min.css',
-        'fontawesome/css/font-awesome.min.css'
+        'bower/bootstrap/dist/css/bootstrap.min.css',
+        'bower/fontawesome/css/font-awesome.min.css',
+        'custom/css/main.css'
     ], assetsDir, 'public/css/style.min.css');
 
-    mix.copy('resources/assets/fontawesome/fonts', 'public/fonts');
+    mix.copy('resources/assets/bower/fontawesome/fonts', 'public/fonts');
 });
