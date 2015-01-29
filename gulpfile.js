@@ -11,6 +11,7 @@ elixir(function (mix) {
 
     mix.styles([
         'bower/bootstrap/dist/css/bootstrap.min.css',
+        'bower/bootstrap-material-design/dist/css/material.min.css',
         'bower/fontawesome/css/font-awesome.min.css',
         'custom/css/main.css'
     ], assetsDir, 'public/css/style.min.css');
