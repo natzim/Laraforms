@@ -3,7 +3,7 @@ $(document).ready(function() {
 });
 
 var snippets = {
-    addFormElement:
+    addFormElement: $(
         '<div class="panel panel-default">' +
             '<div class="panel-heading">' +
                 '<label for="heading">Heading</label>' +
@@ -25,6 +25,23 @@ var snippets = {
                 '<button class="btn btn-danger btn-remove-form-element"><i class="fa fa-trash"></i> Remove</button>' +
             '</div>' +
         '</div>'
+    )
+};
+
+/**
+ * Append a snippet to a given element
+ *
+ * @param $snippet
+ * @param $appendTo
+ */
+var appendSnippets = function($snippet, $appendTo) {
+    $appendTo.append($snippet);
+
+    // Refresh material design styling
+    $.material.init();
+    $snippet.find('select').dropdown();
+
+    $snippet.hide().slideDown();
 };
 
 var addFormElement    = '.btn-add-form-element',
@@ -37,14 +54,7 @@ var addFormElement    = '.btn-add-form-element',
 $(document).on('click', addFormElement, function (e) {
     e.preventDefault();
 
-    var $addFormElement = $(snippets.addFormElement);
-
-    $formElementArea.append($addFormElement);
-
-    $.material.checkbox($addFormElement.find('input[name=required]'));
-    $addFormElement.find('select').dropdown();
-
-    $addFormElement.hide().slideDown();
+    appendSnippets(snippets.addFormElement, $formElementArea);
 });
 
 /**
