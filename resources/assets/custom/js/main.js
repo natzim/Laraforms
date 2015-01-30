@@ -3,7 +3,7 @@ $(document).ready(function() {
 });
 
 var snippets = {
-    addFormElement: $(
+    addFormElement:
         '<div class="panel panel-default">' +
             '<div class="panel-heading">' +
                 '<label for="heading">Heading</label>' +
@@ -25,28 +25,32 @@ var snippets = {
                 '<button class="btn btn-danger btn-remove-form-element"><i class="fa fa-trash"></i> Remove</button>' +
             '</div>' +
         '</div>'
-    )
 };
 
 /**
  * Automatically pre-style checkboxes and toggle buttons because of strange bug
  */
 for (var key in snippets) {
-    var $snippet = snippets[key];
+    var $snippet = $(snippets[key]);
 
     $.material.input($snippet.find($.material.options.inputElements));
     $.material.checkbox($snippet.find($.material.options.checkboxElements));
     $.material.togglebutton($snippet.find($.material.options.togglebuttonElements));
     $.material.radio($snippet.find($.material.options.radioElements));
+
+    // Turn jQuery object into string for storage
+    snippets[key] = $snippet.prop('outerHTML');
 }
 
 /**
  * Append a snippet to a given element
  *
- * @param $snippet
+ * @param snippet
  * @param $appendTo
  */
-var appendSnippets = function ($snippet, $appendTo) {
+var appendSnippets = function (snippet, $appendTo) {
+    var $snippet = $(snippet);
+
     $appendTo.append($snippet);
 
     $snippet.hide().slideDown();
