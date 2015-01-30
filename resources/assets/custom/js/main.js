@@ -16,13 +16,32 @@ var snippets = {
                 '<select class="form-control" name="type">' +
                     '<option value="text">Text</option>' +
                     '<option value="number">Number</option>' +
+                    '<option value="slider">Slider</option>' +
+                    '<option value="radio">Radio</option>' +
+                    '<option value="checkbox">Checkbox</option>' +
                 '</select>' +
                 '<div class="checkbox">' +
                     '<label>' +
                         '<input type="checkbox" name="required"> Required' +
                     '</label>' +
                 '</div>' +
-                '<button class="btn btn-danger btn-remove-form-element"><i class="fa fa-trash"></i> Remove</button>' +
+                '<hr>' +
+                '<div class="form-element-item-area"></div>' +
+                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right"><i class="fa fa-plus"></i></button>' +
+                '<button class="btn btn-fab btn-fab-mini btn-raised btn-danger btn-remove-form-element"><i class="fa fa-trash"></i></button>' +
+            '</div>' +
+        '</div>',
+
+    addFormElementItem:
+        '<div class="well">' +
+            '<div class="container">' +
+                '<div class="col-md-10">' +
+                    '<label for="item">Value</label>' +
+                    '<input type="text" class="form-control" name="item">' +
+                '</div>' +
+                '<div class="col-md-2">' +
+                    '<button class="btn btn-flat btn-remove-form-element-item"><i class="fa fa-times"></i></button>' +
+                '</div>' +
             '</div>' +
         '</div>'
 };
@@ -53,12 +72,14 @@ var appendSnippets = function (snippet, $appendTo) {
 
     $appendTo.append($snippet);
 
-    $snippet.hide().slideDown();
+    $snippet.hide().slideDown(100);
 };
 
-var addFormElement    = '.btn-add-form-element',
-    removeFormElement = '.btn-remove-form-element',
-    $formElementArea  = $('.form-element-area');
+var addFormElement        = '.btn-add-form-element',
+    removeFormElement     = '.btn-remove-form-element',
+    addFormElementItem    = '.btn-add-form-element-item',
+    removeFormElementItem = '.btn-remove-form-element-item',
+    $formElementArea      = $('.form-element-area');
 
 /**
  * Add form element
@@ -67,6 +88,13 @@ $(document).on('click', addFormElement, function (e) {
     e.preventDefault();
 
     appendSnippets(snippets.addFormElement, $formElementArea);
+
+    $formElementArea.sortable({
+        containerSelector: '.form-element-area',
+        itemSelector: '.panel',
+        distance: 10,
+        placeholder: '<hr>'
+    });
 });
 
 /**
@@ -75,7 +103,36 @@ $(document).on('click', addFormElement, function (e) {
 $(document).on('click', removeFormElement, function (e) {
     e.preventDefault();
 
-    $(this).parent().parent().slideUp(400, function () {
+    $(this).parent().parent().slideUp(100, function () {
+        $(this).remove();
+    });
+});
+
+/**
+ * Add form element item
+ */
+$(document).on('click', addFormElementItem, function (e) {
+    e.preventDefault();
+
+    var $itemArea = $(this).siblings('.form-element-item-area');
+
+    appendSnippets(snippets.addFormElementItem, $itemArea);
+
+    $itemArea.sortable({
+        containerSelector: '.form-element-item-area',
+        itemSelector: '.well',
+        distance: 10,
+        placeholder: '<hr>'
+    });
+});
+
+/**
+ * Remove form element item
+ */
+$(document).on('click', removeFormElementItem, function (e) {
+    e.preventDefault();
+
+    $(this).parent().parent().parent().slideUp(100, function () {
         $(this).remove();
     });
 });

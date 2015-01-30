@@ -9,6 +9,7 @@ elixir(function (mix) {
             'bower/bootstrap/dist/js/bootstrap.min.js',
             'bower/bootstrap-material-design/dist/js/ripples.min.js',
             'bower/bootstrap-material-design/dist/js/material.min.js',
+            'bower/jquery-sortable/source/js/jquery-sortable-min.js',
             'custom/js/main.js'
         ], assetsDir, 'public/js/app.min.js')
 
