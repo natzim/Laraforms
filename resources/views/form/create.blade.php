@@ -31,7 +31,7 @@
             </div>
         @endif
 
-        <div class="form-element-area"></div>
+        <div class="form-element-area sortable"></div>
 
         <button class="btn btn-success btn-add-form-element"><i class="fa fa-plus"></i> Add form element</button>
 

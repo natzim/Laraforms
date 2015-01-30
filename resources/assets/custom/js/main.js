@@ -29,17 +29,25 @@ var snippets = {
 };
 
 /**
+ * Automatically pre-style checkboxes and toggle buttons because of strange bug
+ */
+for (var key in snippets) {
+    var $snippet = snippets[key];
+
+    $.material.input($snippet.find($.material.options.inputElements));
+    $.material.checkbox($snippet.find($.material.options.checkboxElements));
+    $.material.togglebutton($snippet.find($.material.options.togglebuttonElements));
+    $.material.radio($snippet.find($.material.options.radioElements));
+}
+
+/**
  * Append a snippet to a given element
  *
  * @param $snippet
  * @param $appendTo
  */
-var appendSnippets = function($snippet, $appendTo) {
+var appendSnippets = function ($snippet, $appendTo) {
     $appendTo.append($snippet);
-
-    // Refresh material design styling
-    $.material.init();
-    $snippet.find('select').dropdown();
 
     $snippet.hide().slideDown();
 };
