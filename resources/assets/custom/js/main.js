@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $.material.init();
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 var snippets = {
@@ -27,7 +29,7 @@ var snippets = {
                 '</div>' +
                 '<hr>' +
                 '<div class="form-element-item-area"></div>' +
-                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right"><i class="fa fa-plus"></i></button>' +
+                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right" data-toggle="tooltip" data-placement="top" title="Create a new item"><i class="fa fa-plus"></i></button>' +
                 '<button class="btn btn-fab btn-fab-mini btn-raised btn-danger btn-remove-form-element"><i class="fa fa-trash"></i></button>' +
             '</div>' +
         '</div>',
@@ -69,6 +71,8 @@ for (var key in snippets) {
  */
 var appendSnippets = function (snippet, $appendTo) {
     var $snippet = $(snippet);
+
+    $snippet.find('[data-toggle="tooltip"]').tooltip();
 
     $appendTo.append($snippet);
 
