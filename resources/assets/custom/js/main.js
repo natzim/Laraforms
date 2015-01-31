@@ -1,7 +1,5 @@
 $(document).ready(function() {
     $.material.init();
-
-    $('[data-toggle="tooltip"]').tooltip();
 });
 
 var elementTypes = {
@@ -20,7 +18,7 @@ var elementTypes = {
     checkbox: {
         hasItems: true
     }
-}
+};
 
 var snippets = {
     addFormElement:
@@ -59,7 +57,7 @@ var snippets = {
                 '</div>' +
                 '<hr>' +
                 '<div class="form-element-item-area"></div>' +
-                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load" data-toggle="tooltip" data-placement="top" title="Create a new item"><i class="fa fa-plus"></i></button>' +
+                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load"><i class="fa fa-plus"></i></button>' +
 
             '</div>' +
         '</div>',
@@ -73,7 +71,7 @@ var snippets = {
                     '</a>' +
                 '</div>' +
                 '<div class="col-md-10">' +
-                    '<label for="item">Value</label>' +
+                    '<label for="item">Option</label>' +
                     '<input type="text" class="form-control" name="item">' +
                 '</div>' +
                 '<div class="col-md-1">' +
@@ -109,7 +107,7 @@ for (var key in snippets) {
 var appendSnippets = function (snippet, $appendTo) {
     var $snippet = $(snippet);
 
-    $snippet.find('[data-toggle="tooltip"]').tooltip();
+    $snippet.find('select').dropdown();
 
     $appendTo.append($snippet);
 

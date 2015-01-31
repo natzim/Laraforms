@@ -4,6 +4,7 @@
     "bootstrap": "~3.3.2",
     "fontawesome": "~4.3.0",
     "bootstrap-material-design": "~0.2.2",
-    "jquery-sortable": "~0.9.12"
+    "jquery-sortable": "~0.9.12",
+    "dropdown.js": "git://github.com/FezVrasta/dropdown.js.git"
   }
 }

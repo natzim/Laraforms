@@ -37,7 +37,7 @@
 
         <div class="form-element-area"></div>
 
-        <button class="btn btn-fab btn-raised btn-success pull-right btn-add-form-element" data-toggle="tooltip" data-placement="top" title="Create a new element"><i class="fa fa-plus"></i></button>
+        <button class="btn btn-fab btn-raised btn-success pull-right btn-add-form-element"><i class="fa fa-plus"></i></button>
 
         {!! Form::submit('Create form', ['class' => 'btn btn-primary']) !!}
 

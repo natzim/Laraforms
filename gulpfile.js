@@ -10,6 +10,7 @@ elixir(function (mix) {
             'bower/bootstrap-material-design/dist/js/ripples.min.js',
             'bower/bootstrap-material-design/dist/js/material.min.js',
             'bower/jquery-sortable/source/js/jquery-sortable-min.js',
+            'bower/dropdown.js/jquery.dropdown.js',
             'custom/js/main.js'
         ], assetsDir, 'public/js/app.min.js')
 
@@ -18,6 +19,7 @@ elixir(function (mix) {
             'bower/bootstrap-material-design/dist/css/ripples.min.css',
             'bower/bootstrap-material-design/dist/css/material.min.css',
             'bower/fontawesome/css/font-awesome.min.css',
+            'bower/dropdown.js/jquery.dropdown.css',
             'custom/css/main.css'
         ], assetsDir, 'public/css/style.min.css')
 
