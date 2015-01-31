@@ -4,16 +4,46 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+var elementTypes = {
+    text: {
+        hasItems: false
+    },
+    number: {
+        hasItems: false
+    },
+    slider: {
+        hasItems: false
+    },
+    radio: {
+        hasItems: true
+    },
+    checkbox: {
+        hasItems: true
+    }
+}
+
 var snippets = {
     addFormElement:
         '<div class="panel panel-default">' +
             '<div class="panel-heading">' +
-                '<label for="heading">Heading</label>' +
-                '<input type="text" class="form-control" name="heading">' +
+                '<div class="container-fluid">' +
+                    '<div class="col-md-1">' +
+                        '<a class="btn btn-flat reorder element">' +
+                            '<i class="fa fa-reorder"></i>' +
+                        '</a>' +
+                    '</div>' +
+                    '<div class="col-md-10">' +
+                        '<label for="question">Question</label>' +
+                        '<input type="text" class="form-control" name="question">' +
+                    '</div>' +
+                    '<div class="col-md-1">' +
+                        '<a class="btn btn-flat btn-remove-form-element">' +
+                            '<i class="fa fa-times"></i>' +
+                        '</a>' +
+                    '</div>' +
+                '</div>' +
             '</div>' +
             '<div class="panel-body">' +
-                '<label for="description">Description</label>' +
-                '<textarea class="form-control" name="description"></textarea>' +
                 '<label for="type">Type</label>' +
                 '<select class="form-control" name="type">' +
                     '<option value="text">Text</option>' +
@@ -29,19 +59,24 @@ var snippets = {
                 '</div>' +
                 '<hr>' +
                 '<div class="form-element-item-area"></div>' +
-                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right" data-toggle="tooltip" data-placement="top" title="Create a new item"><i class="fa fa-plus"></i></button>' +
-                '<button class="btn btn-fab btn-fab-mini btn-raised btn-danger btn-remove-form-element"><i class="fa fa-trash"></i></button>' +
+                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load" data-toggle="tooltip" data-placement="top" title="Create a new item"><i class="fa fa-plus"></i></button>' +
+
             '</div>' +
         '</div>',
 
     addFormElementItem:
         '<div class="well">' +
-            '<div class="container">' +
+            '<div class="container-fluid">' +
+                '<div class="col-md-1">' +
+                    '<a class="btn btn-flat reorder item">' +
+                        '<i class="fa fa-reorder"></i>' +
+                    '</a>' +
+                '</div>' +
                 '<div class="col-md-10">' +
                     '<label for="item">Value</label>' +
                     '<input type="text" class="form-control" name="item">' +
                 '</div>' +
-                '<div class="col-md-2">' +
+                '<div class="col-md-1">' +
                     '<button class="btn btn-flat btn-remove-form-element-item"><i class="fa fa-times"></i></button>' +
                 '</div>' +
             '</div>' +
@@ -58,6 +93,8 @@ for (var key in snippets) {
     $.material.checkbox($snippet.find($.material.options.checkboxElements));
     $.material.togglebutton($snippet.find($.material.options.togglebuttonElements));
     $.material.radio($snippet.find($.material.options.radioElements));
+
+    $snippet.find('.hide-on-load').hide();
 
     // Turn jQuery object into string for storage
     snippets[key] = $snippet.prop('outerHTML');
@@ -95,6 +132,7 @@ $(document).on('click', addFormElement, function (e) {
 
     $formElementArea.sortable({
         containerSelector: '.form-element-area',
+        handle: '.reorder.element',
         itemSelector: '.panel',
         distance: 10,
         placeholder: '<hr>'
@@ -107,7 +145,7 @@ $(document).on('click', addFormElement, function (e) {
 $(document).on('click', removeFormElement, function (e) {
     e.preventDefault();
 
-    $(this).parent().parent().slideUp(100, function () {
+    $(this).closest('.panel').slideUp(100, function () {
         $(this).remove();
     });
 });
@@ -124,6 +162,7 @@ $(document).on('click', addFormElementItem, function (e) {
 
     $itemArea.sortable({
         containerSelector: '.form-element-item-area',
+        handle: '.reorder.item',
         itemSelector: '.well',
         distance: 10,
         placeholder: '<hr>'
@@ -136,7 +175,24 @@ $(document).on('click', addFormElementItem, function (e) {
 $(document).on('click', removeFormElementItem, function (e) {
     e.preventDefault();
 
-    $(this).parent().parent().parent().slideUp(100, function () {
+    $(this).closest('.well').slideUp(100, function () {
         $(this).remove();
     });
+});
+
+/**
+ * Form element type change
+ */
+$(document).on('change', 'select[name=type]', function () {
+    var hasItems = elementTypes[$(this).val()].hasItems;
+
+    if (hasItems) {
+        $(this).parent().siblings('.btn-add-form-element-item').fadeIn();
+    } else {
+        $(this).parent().siblings('.btn-add-form-element-item').fadeOut();
+
+        $(this).parent().siblings('.form-element-item-area').children().slideUp(100, function () {
+            $(this).remove();
+        });
+    }
 });
