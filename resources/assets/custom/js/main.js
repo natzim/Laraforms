@@ -31,8 +31,8 @@ var snippets = {
                         '</a>' +
                     '</div>' +
                     '<div class="col-md-10">' +
-                        '<label for="question">Question</label>' +
-                        '<input type="text" class="form-control" name="question">' +
+                        '<label for="question-^qnum^">Question</label>' +
+                        '<input type="text" class="form-control" name="question-^qnum^" id="question-^qnum^">' +
                     '</div>' +
                     '<div class="col-md-1">' +
                         '<a class="btn btn-flat btn-remove-form-element">' +
@@ -42,23 +42,24 @@ var snippets = {
                 '</div>' +
             '</div>' +
             '<div class="panel-body">' +
-                '<label for="type">Type</label>' +
-                '<select class="form-control" name="type">' +
-                    '<option value="text">Text</option>' +
-                    '<option value="number">Number</option>' +
-                    '<option value="slider">Slider</option>' +
-                    '<option value="radio">Radio</option>' +
-                    '<option value="checkbox">Checkbox</option>' +
-                '</select>' +
-                '<div class="checkbox">' +
-                    '<label>' +
-                        '<input type="checkbox" name="required"> Required' +
-                    '</label>' +
+                '<div class="container-fluid">' +
+                    '<label for="type">Type</label>' +
+                    '<select class="form-control" name="type">' +
+                        '<option value="text">Text</option>' +
+                        '<option value="number">Number</option>' +
+                        '<option value="slider">Slider</option>' +
+                        '<option value="radio">Radio</option>' +
+                        '<option value="checkbox">Checkbox</option>' +
+                    '</select>' +
+                    '<div class="checkbox">' +
+                        '<label>' +
+                            '<input type="checkbox" name="required"> Required' +
+                        '</label>' +
+                    '</div>' +
+                    '<hr>' +
+                    '<div class="form-element-item-area"></div>' +
+                    '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load"><i class="fa fa-plus"></i></button>' +
                 '</div>' +
-                '<hr>' +
-                '<div class="form-element-item-area"></div>' +
-                '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load"><i class="fa fa-plus"></i></button>' +
-
             '</div>' +
         '</div>',
 
@@ -72,7 +73,7 @@ var snippets = {
                 '</div>' +
                 '<div class="col-md-10">' +
                     '<label for="item">Option</label>' +
-                    '<input type="text" class="form-control" name="item">' +
+                    '<input type="text" class="form-control" name="item" id="item">' +
                 '</div>' +
                 '<div class="col-md-1">' +
                     '<button class="btn btn-flat btn-remove-form-element-item"><i class="fa fa-times"></i></button>' +
@@ -107,6 +108,12 @@ for (var key in snippets) {
 var appendSnippets = function (snippet, $appendTo) {
     var $snippet = $(snippet);
 
+    // Insert question number into certain places to allow for label clicking to select input
+    // Replaces any instance of ^qnum^ with the number of elements
+    $snippet.html(function (index, html) {
+        return html.replace(/\^qnum\^/g, elementCount);
+    });
+
     $snippet.find('select').dropdown();
 
     $appendTo.append($snippet);
@@ -119,6 +126,8 @@ var addFormElement        = '.btn-add-form-element',
     addFormElementItem    = '.btn-add-form-element-item',
     removeFormElementItem = '.btn-remove-form-element-item',
     $formElementArea      = $('.form-element-area');
+
+var elementCount = 0;
 
 /**
  * Add form element
@@ -135,6 +144,8 @@ $(document).on('click', addFormElement, function (e) {
         distance: 10,
         placeholder: '<hr>'
     });
+
+    elementCount++;
 });
 
 /**
@@ -146,6 +157,8 @@ $(document).on('click', removeFormElement, function (e) {
     $(this).closest('.panel').slideUp(100, function () {
         $(this).remove();
     });
+
+    elementCount--;
 });
 
 /**
