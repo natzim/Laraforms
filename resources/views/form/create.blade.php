@@ -35,6 +35,19 @@
                     </div>
                 @endif
 
+                <div class="form-group {{ $errors->has('max-responses') ? 'has-error' : '' }}">
+                    {!! Form::label('max-responses', 'Maximum number of responses') !!}
+                    {!! Form::text('max-responses', null, ['class' => 'form-control', 'data-hint' => 'Leave blank for no limit']) !!}
+                </div>
+
+                @if ($errors->has('max-responses'))
+                    <div class="alert alert-danger" role="alert">
+                        @foreach ($errors->get('max-responses') as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+
             </div>
 
         </div>
