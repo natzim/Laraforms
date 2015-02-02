@@ -4,7 +4,13 @@ Laraforms is a lightweight and minimalist alternative to Google Forms
 
 ## Installation
 
-This requires composer and node to be installed
+This requires composer and npm to be installed
+
+Install bower and gulp
+
+```
+sudo npm install -g bower gulp
+```
 
 Clone repository
 
@@ -38,4 +44,16 @@ Run gulp
 
 ```
 gulp
+```
+
+Edit the .env file with variables to your configuration
+
+```
+vim .env
+```
+
+Run the migrations
+
+```
+php artisan migrate
 ```

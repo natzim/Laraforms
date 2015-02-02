@@ -1,5 +1,4 @@
 /vendor
-.env
 
 /resources/assets/bower/*
 /node_modules
