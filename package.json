@@ -1,7 +1,5 @@
 {
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "laravel-elixir": "*",
-    "bower": "^1.3.12"
+    "laravel-elixir": "*"
   }
 }

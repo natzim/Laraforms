@@ -1,15 +1,16 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "name": "Laraforms",
+    "descriptions": "Simple survey web app.",
     "license": "MIT",
     "type": "project",
+    "authors": {
+        "name": "Nat Zimmermann",
+        "email": "nathanielzimmermann@gmail.com",
+        "homepage": "http://natzim.me",
+        "role": "Literally everything"
+    },
     "require": {
-        "laravel/framework": "~5.0",
-        "illuminate/html": "5.0.*@dev"
+        "laravel/framework": "~5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",

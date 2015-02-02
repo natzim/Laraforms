@@ -12,6 +12,10 @@ To be able to install Laraforms, you will need:
 
 - NodeJS and npm
 
+- Bower
+
+- Gulp
+
 ### Method
 
 Clone repository
@@ -46,4 +50,16 @@ Run gulp to create resources
 
 ```
 gulp
+```
+
+Edit the .env file with variables to your configuration
+
+```
+vim .env
+```
+
+Run the migrations
+
+```
+php artisan migrate
 ```
