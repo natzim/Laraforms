@@ -1,6 +1,6 @@
 var elixir = require('laravel-elixir');
 
-var assetsDir = 'resources/assets';
+var assetsDir = 'resources/assets/';
 
 elixir(function (mix) {
     mix
@@ -23,7 +23,7 @@ elixir(function (mix) {
             'custom/css/main.css'
         ], 'public/css/style.css', assetsDir)
 
-        .copy('resources/assets/bower/fontawesome/fonts', 'public/fonts')
-        .copy('resources/assets/bower/bootstrap-material-design/fonts', 'public/fonts')
-        .copy('resources/assets/bower/bootstrap-material-design/dist/css/material.css.map', 'public/css/material.css.map');
+        .copy(assetsDir + 'bower/fontawesome/fonts', 'public/fonts')
+        .copy(assetsDir + 'bower/bootstrap-material-design/fonts', 'public/fonts')
+        .copy(assetsDir + 'bower/bootstrap-material-design/dist/css/material.css.map', 'public/css/material.css.map');
 });
