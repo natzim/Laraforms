@@ -12,7 +12,7 @@ elixir(function (mix) {
             'bower/jquery-sortable/source/js/jquery-sortable.js',
             'bower/dropdown.js/jquery.dropdown.js',
             'custom/js/main.js'
-        ], 'public/js/app.js', assetsDir)
+        ], assetsDir, 'public/js/app.js')
 
         .styles([
             'bower/bootstrap/dist/css/bootstrap.css',
@@ -21,7 +21,7 @@ elixir(function (mix) {
             'bower/fontawesome/css/font-awesome.css',
             'bower/dropdown.js/jquery.dropdown.css',
             'custom/css/main.css'
-        ], 'public/css/style.css', assetsDir)
+        ], assetsDir, 'public/css/style.css')
 
         .copy('resources/assets/bower/fontawesome/fonts', 'public/fonts')
         .copy('resources/assets/bower/bootstrap-material-design/fonts', 'public/fonts')
