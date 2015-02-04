@@ -22,9 +22,7 @@ Clone repository
 
 ```
 git clone https://github.com/natzim/Laraforms.git
-```
 
-```
 cd Laraforms
 ```
 
@@ -34,27 +32,29 @@ Install Laravel and Laravel's dependencies
 composer install
 ```
 
-Install bower, elixir and gulp
+Install Laravel Elixir
 
 ```
 npm install
 ```
 
-Download Font Awesome and Bootstrap
+Download frontend dependencies
 
 ```
 bower install
 ```
 
-Run gulp to create resources
+Run gulp to create public resources
 
 ```
 gulp
 ```
 
-Edit the .env file with variables to your configuration
+Edit the environment configuration file to match your installation
 
 ```
+mv .env.example .env
+
 vim .env
 ```
 

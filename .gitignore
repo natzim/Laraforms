@@ -1,8 +1,9 @@
-/vendor
+vendor
+.env
 
-/resources/assets/bower/*
-/node_modules
-/.idea/
-/public/js
-/public/css
-/public/fonts
+resources/assets/bower/*
+node_modules
+.idea/
+public/js
+public/css
+public/fonts
