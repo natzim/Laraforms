@@ -72,8 +72,8 @@ var snippets = {
                     '</a>' +
                 '</div>' +
                 '<div class="col-md-10">' +
-                    '<label for="item">Option</label>' +
-                    '<input type="text" class="form-control" name="item" id="item">' +
+                    '<label for="item-^inum^">Option</label>' +
+                    '<input type="text" class="form-control" name="item-^inum^" id="item-^inum^">' +
                 '</div>' +
                 '<div class="col-md-1">' +
                     '<button class="btn btn-flat btn-remove-form-element-item"><i class="fa fa-times"></i></button>' +
@@ -111,7 +111,9 @@ var appendSnippets = function (snippet, $appendTo) {
     // Insert question number into certain places to allow for label clicking to select input
     // Replaces any instance of ^qnum^ with the number of elements
     $snippet.html(function (index, html) {
-        return html.replace(/\^qnum\^/g, elementCount);
+        return html
+            .replace(/\^qnum\^/g, elementCount)
+            .replace(/\^inum\^/g, itemCount);
     });
 
     $snippet.find('select').dropdown();
@@ -127,7 +129,8 @@ var addFormElement        = '.btn-add-form-element',
     removeFormElementItem = '.btn-remove-form-element-item',
     $formElementArea      = $('.form-element-area');
 
-var elementCount = 0;
+var elementCount = 0,
+    itemCount    = 0;
 
 /**
  * Add form element
@@ -178,6 +181,8 @@ $(document).on('click', addFormElementItem, function (e) {
         distance: 10,
         placeholder: '<hr>'
     });
+
+    itemCount++;
 });
 
 /**
@@ -189,6 +194,8 @@ $(document).on('click', removeFormElementItem, function (e) {
     $(this).closest('.well').slideUp(100, function () {
         $(this).remove();
     });
+
+    itemCount--;
 });
 
 /**

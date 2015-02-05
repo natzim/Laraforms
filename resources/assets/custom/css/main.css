@@ -11,3 +11,7 @@ body.dragging, body.dragging * {
     opacity: 0.5;
     z-index: 2000;
 }
+
+.img-full-width {
+    width: 100%;
+}

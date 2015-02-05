@@ -3,12 +3,14 @@
     "descriptions": "Simple survey web app.",
     "license": "MIT",
     "type": "project",
-    "authors": {
-        "name": "Nat Zimmermann",
-        "email": "nathanielzimmermann@gmail.com",
-        "homepage": "http://natzim.me",
-        "role": "Literally everything"
-    },
+    "authors": [
+        {
+            "name": "Nat Zimmermann",
+            "email": "nat@natzim.me",
+            "homepage": "http://natzim.me",
+            "role": "Literally everything"
+        }
+    ],
     "require": {
         "laravel/framework": "~5.0"
     },
@@ -46,5 +48,5 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

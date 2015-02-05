@@ -1,54 +1,60 @@
 # Laraforms
 
-Laraforms is a lightweight and minimalist alternative to Google Forms
+Laraforms is a simple survey platform with an easy-to-use material design interface.
 
 ## Installation
 
-This requires composer and npm to be installed
+### Dependencies
 
-Install bower and gulp
+To be able to install Laraforms, you will need:
 
-```
-sudo npm install -g bower gulp
-```
+- Composer
+
+- NodeJS and npm
+
+- Bower
+
+- Gulp
+
+### Method
 
 Clone repository
 
 ```
 git clone https://github.com/natzim/Laraforms.git
-```
 
-```
 cd Laraforms
 ```
 
-Install composer packages
+Install Laravel and Laravel's dependencies
 
 ```
 composer install
 ```
 
-Install node packages
+Install Laravel Elixir
 
 ```
 npm install
 ```
 
-Download Font Awesome and Bootstrap
+Download frontend dependencies
 
 ```
 bower install
 ```
 
-Run gulp
+Run gulp to create public resources
 
 ```
 gulp
 ```
 
-Edit the .env file with variables to your configuration
+Edit the environment configuration file to match your installation
 
 ```
+mv .env.example .env
+
 vim .env
 ```
 
