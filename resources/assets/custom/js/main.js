@@ -4,19 +4,57 @@ $(document).ready(function() {
 
 var elementTypes = {
     text: {
-        hasItems: false
+        hasItems: false,
+        validation: {
+            required: {
+                display: 'Required',
+                type: 'checkbox'
+            }
+        }
     },
     number: {
-        hasItems: false
+        hasItems: false,
+        validation: {
+            required: {
+                display: 'Required',
+                type: 'checkbox'
+            },
+            min: {
+                display: 'Minimum',
+                type: 'number'
+            },
+            max: {
+                display: 'Maximum',
+                type: 'number'
+            }
+        }
     },
     slider: {
-        hasItems: false
+        hasItems: false,
+        validation: {
+            required: {
+                display: 'Required',
+                type: 'checkbox'
+            }
+        }
     },
     radio: {
-        hasItems: true
+        hasItems: true,
+        validation: {
+            required: {
+                display: 'Required',
+                type: 'checkbox'
+            }
+        }
     },
     checkbox: {
-        hasItems: true
+        hasItems: true,
+        validation: {
+            required: {
+                display: 'Required',
+                type: 'checkbox'
+            }
+        }
     }
 };
 
@@ -53,9 +91,10 @@ var snippets = {
                     '</select>' +
                     '<div class="checkbox">' +
                         '<label>' +
-                            '<input type="checkbox" name="required"> Required' +
+                            '<input type="checkbox" name="validation"> Validation' +
                         '</label>' +
                     '</div>' +
+                    '<div class="form-element-validation-area"></div>' +
                     '<hr>' +
                     '<div class="form-element-item-area"></div>' +
                     '<button class="btn btn-fab btn-fab-mini btn-raised btn-success btn-add-form-element-item pull-right hide-on-load"><i class="fa fa-plus"></i></button>' +
@@ -79,7 +118,16 @@ var snippets = {
                     '<button class="btn btn-flat btn-remove-form-element-item"><i class="fa fa-times"></i></button>' +
                 '</div>' +
             '</div>' +
-        '</div>'
+        '</div>',
+
+    validationItem: 'VALIDATION ITEM HERE'
+};
+
+var makeMaterial = function ($snippet) {
+    $.material.input($snippet.find($.material.options.inputElements));
+    $.material.checkbox($snippet.find($.material.options.checkboxElements));
+    $.material.togglebutton($snippet.find($.material.options.togglebuttonElements));
+    $.material.radio($snippet.find($.material.options.radioElements));
 };
 
 /**
@@ -88,10 +136,7 @@ var snippets = {
 for (var key in snippets) {
     var $snippet = $(snippets[key]);
 
-    $.material.input($snippet.find($.material.options.inputElements));
-    $.material.checkbox($snippet.find($.material.options.checkboxElements));
-    $.material.togglebutton($snippet.find($.material.options.togglebuttonElements));
-    $.material.radio($snippet.find($.material.options.radioElements));
+    makeMaterial($snippet);
 
     $snippet.find('.hide-on-load').hide();
 
@@ -106,6 +151,7 @@ for (var key in snippets) {
  * @param $appendTo
  */
 var appendSnippets = function (snippet, $appendTo) {
+
     var $snippet = $(snippet);
 
     // Insert question number into certain places to allow for label clicking to select input
@@ -212,5 +258,16 @@ $(document).on('change', 'select[name=type]', function () {
         $(this).parent().siblings('.form-element-item-area').children().slideUp(100, function () {
             $(this).remove();
         });
+    }
+});
+
+/**
+ * On validation click, show validation menu
+ */
+$(document).on('click', 'input[name=validation]', function () {
+    var validationItems = elementTypes[$(this).closest('.checkbox').siblings('.form-control-wrapper').find('select[name=type]').val()].validation;
+
+    for (var validationItem in validationItems) {
+        appendSnippets(snippets.validationItem, $('.form-element-validation-area'));
     }
 });
