@@ -271,3 +271,11 @@ $(document).on('click', 'input[name=validation]', function () {
         appendSnippets(snippets.validationItem, $('.form-element-validation-area'));
     }
 });
+
+$(document).on('submit', '#form-create', function (e) {
+    e.preventDefault();
+
+    var data = JSON.stringify($(this).serializeArray());
+
+    console.log(data);
+});

@@ -3,8 +3,7 @@
 @section('content')
     <h2>New form</h2>
 
-    <form action="{{ route('form.store') }}" method="post">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <form action="{{ route('form.store') }}" method="post" id="form-create">
 
         <div class="well">
             <div class="container-fluid">
