@@ -13,9 +13,9 @@ class Form extends Model {
 
     protected $dates = ['deleted_at'];
 
-    public function elements()
+    public function questions()
     {
-        return $this->hasMany('App\FormElement');
+        return $this->hasMany('App\Question');
     }
 
     public function user()

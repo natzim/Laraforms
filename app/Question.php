@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class FormElement extends Model {
+class Question extends Model {
 
-    protected $table = 'form_elements';
+    protected $table = 'questions';
     public $timestamps = true;
 
     public function form()
@@ -12,9 +12,9 @@ class FormElement extends Model {
         return $this->belongsTo('App\Form');
     }
 
-    public function items()
+    public function options()
     {
-        return $this->hasMany('App\FormElementItem');
+        return $this->hasMany('App\Option');
     }
 
 }

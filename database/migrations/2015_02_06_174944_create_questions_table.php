@@ -3,15 +3,15 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateFormElementsTable extends Migration {
+class CreateQuestionsTable extends Migration {
 
     public function up()
     {
-        Schema::create('form_elements', function (Blueprint $table)
+        Schema::create('questions', function (Blueprint $table)
         {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('form_id')->unsigned();
+            $table->integer('form_id')->unsigned()->references('id')->on('forms');
             $table->string('heading');
             $table->text('description');
             $table->string('type');
@@ -21,7 +21,7 @@ class CreateFormElementsTable extends Migration {
 
     public function down()
     {
-        Schema::drop('form_elements');
+        Schema::drop('questions');
     }
 
 }
