@@ -1,23 +1,52 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
 use App\User;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller {
 
-    public function create()
+    /**
+     * Attempts to create a user
+     *
+     * @param UserFormRequest $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function create(UserFormRequest $request)
     {
-        $input = Input::json();
+        $user = new User;
 
-        return $input;
+        $user->name = Input::get('name');
+        $user->password = Hash::make(Input::get('password'));
+
+        $user->save();
+
+        return response()->json($user, 201);
     }
 
+    /**
+     * Attempts to show a user
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
     public function show($id)
     {
-        return User::firstOrFail($id)->toJson();
+        return User::findOrFail($id);
     }
 
+    /**
+     * Attempts to update a user
+     *
+     * @TODO Make this meaningful
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
     public function update($id)
     {
         $input = Input::json();
@@ -25,9 +54,14 @@ class UserController extends Controller {
         return $input;
     }
 
+    /**
+     * Attempts to delete a user
+     *
+     * @param $id
+     */
     public function delete($id)
     {
-        User::firstOrFail($id)->delete();
+        User::findOrFail($id)->delete();
     }
 
 }

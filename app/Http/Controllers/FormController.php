@@ -2,6 +2,7 @@
 
 use App\Form;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class FormController extends Controller {
 

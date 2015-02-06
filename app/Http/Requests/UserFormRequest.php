@@ -1,10 +1,9 @@
 <?php namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
 
 class UserFormRequest extends FormRequest {
-
-    protected $redirect = 'user/create';
 
     public function rules()
     {
@@ -17,6 +16,11 @@ class UserFormRequest extends FormRequest {
     public function authorize()
     {
         return true;
+    }
+
+    public function response(array $errors)
+    {
+        return new JsonResponse($errors, 422);
     }
 
 }
