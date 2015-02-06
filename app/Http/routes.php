@@ -1,55 +1,69 @@
 <?php
 
-Route::controllers([
-    'auth'     => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
+/**
+ * API
+ */
 
-Route::get('/', ['as' => 'index', function ()
+Route::group(['prefix' => 'api'], function ()
 {
-    return view('index');
-}]);
 
-Route::get('dashboard', [
-    'as'         => 'dashboard',
-    'middleware' => 'auth',
-    function ()
-    {
-        return view('dashboard');
-    }
-]);
+    /**
+     * Forms
+     */
 
-/**
- * Form REST
- */
+    Route::post(
+        'forms',
+        'FormController@create'
+    );
+    Route::get(
+        'forms/{id}',
+        'FormController@show'
+    );
+    Route::put(
+        'forms/{id}',
+        'FormController@update'
+    );
+    Route::delete(
+        'forms/{id}',
+        'FormController@delete'
+    );
+    Route::get(
+        'forms',
+        'FormController@list'
+    );
 
-Route::resource('form', 'FormController');
+    /**
+     * Users
+     */
 
-/**
- * User REST
- */
+    Route::post(
+        'users',
+        'UserController@create'
+    );
+    Route::get(
+        'users/{id}',
+        'UserController@show'
+    );
+    Route::put(
+        'users/{id}',
+        'UserController@update'
+    );
+    Route::delete(
+        'users/{id}',
+        'UserController@delete'
+    );
+    Route::get(
+        'users',
+        'UserController@list'
+    );
 
-Route::any('user/signout', [
-    'as'   => 'user.signout',
-    'uses' => 'UserController@signOut'
-]);
+    Route::get(
+        'users/signout',
+        'UserController@signOut'
+    );
+    Route::post(
+        'users/authenticate',
+        'UserController@authenticate'
+    );
 
-Route::get('user/signin', [
-    'as'   => 'user.signin',
-    'uses' => 'UserController@signIn'
-]);
-
-Route::post('user/authenticate', [
-    'as'   => 'user.authenticate',
-    'uses' => 'UserController@authenticate'
-]);
-
-Route::resource('user', 'UserController');
-
-/**
- * Ajax views
- */
-Route::get('snippets/form/element/new', function ()
-{
-    return view('snippets.form.element.new');
 });
