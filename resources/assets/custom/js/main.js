@@ -1,4 +1,4 @@
-angular.module('forms', [])
+angular.module('forms', ['ui.bootstrap'])
     .controller('TestCtrl', function TestCtrl($http) {
         var test = this;
 

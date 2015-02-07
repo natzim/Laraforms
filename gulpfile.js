@@ -6,12 +6,12 @@ elixir(function (mix) {
     mix
         .scripts([
             'bower/jquery/dist/jquery.js',
-            'bower/bootstrap/dist/js/bootstrap.js',
             'bower/bootstrap-material-design/dist/js/ripples.js',
             'bower/bootstrap-material-design/dist/js/material.js',
             'bower/jquery-sortable/source/js/jquery-sortable.js',
             'bower/dropdown.js/jquery.dropdown.js',
             'bower/angular/angular.js',
+            'bower/angular-bootstrap/ui-bootstrap.js',
             'custom/js/main.js'
         ], 'public/js/app.js', assetsDir)
 
