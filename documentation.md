@@ -10,11 +10,11 @@ Create a new user.
 
 #### Parameters
 
-Parameter | Description | Validation
---- | --- | ---
-name | The desired username | Required. Can only contain alphanumeric characters and dashes. Min length 3. Max length 20. Must be unique.
-password | The desired password | Required. Must match `password_confirmation`.
-password_confirmation | A confirmation of the desired password | Required. Must match `password`.
+Parameter             | Type     | Description                | Validation
+:-                    | :-       | :-                         | :-
+name                  | `string` | The desired username.      | Required. Can only contain alphanumeric characters and dashes. Min length 3. Max length 20. Must be unique.
+password              | `string` | The desired password.      | Required. Must match `password_confirmation`.
+password_confirmation | `string` | The password confirmation. | Required. Must match `password`.
 
 #### Output
 
@@ -50,11 +50,13 @@ Not fully implemented.
 
 Check to see if the user is signed in.
 
+#### Output
+
+Returns `true` or `false` to indicate if the user is signed in.
+
 ### GET api/account/signout
 
 Sign out the current user.
-
-Not fully implemented.
 
 ### POST api/account/authenticate
 
@@ -62,14 +64,14 @@ Authenticate a user.
 
 #### Parameters
 
-Parameter | Description
---- | --- | ---
-name | The user's username
-password | The user's password
+Parameter | Type     | Description
+:-        | :-       | :-
+name      | `string` | The user's username.
+password  | `string` | The user's password.
 
 #### Output
 
-Returns true or false to indicate if the user has been logged in.
+Returns `true` or `false` to indicate if the user has been authenticated.
 
 ## Forms
 
