@@ -19,7 +19,7 @@ class UserController extends Controller {
     {
         $user = new User;
 
-        $user->name = Input::get('name');
+        $user->name     = Input::get('name');
         $user->password = Hash::make(Input::get('password'));
 
         $user->save();
@@ -71,6 +71,29 @@ class UserController extends Controller {
     public function authCheck()
     {
         return response()->json(Auth::check());
+    }
+
+    /**
+     * Attempts to sign out a user
+     */
+    public function signOut()
+    {
+        Auth::logout();
+    }
+
+    /**
+     * Attempts to authenticate a user
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function authenticate()
+    {
+        $attempt = Auth::attempt([
+            'name'     => Input::get('name'),
+            'password' => Input::get('password')
+        ]);
+
+        return response()->json($attempt);
     }
 
 }

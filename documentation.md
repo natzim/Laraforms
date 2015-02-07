@@ -60,7 +60,16 @@ Not fully implemented.
 
 Authenticate a user.
 
-Not fully implemented.
+#### Parameters
+
+Parameter | Description
+--- | --- | ---
+name | The user's username
+password | The user's password
+
+#### Output
+
+Returns true or false to indicate if the user has been logged in.
 
 ## Forms
 
