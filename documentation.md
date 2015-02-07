@@ -1,0 +1,91 @@
+# API Documentation
+
+All requests should use the JSON format.
+
+## Users
+
+### POST api/users
+
+Create a new user.
+
+#### Parameters
+
+Parameter | Description | Validation
+--- | --- | ---
+name | The desired username | Required. Can only contain alphanumeric characters and dashes. Min length 3. Max length 20. Must be unique.
+password | The desired password | Required. Must match `password_confirmation`.
+password_confirmation | A confirmation of the desired password | Required. Must match `password`.
+
+#### Output
+
+Returns new user object with `201 Created`.
+
+### GET api/users/:id
+
+Get a specific user matching the given ID.
+
+#### Output
+
+Returns user object with `200 OK`.
+
+### PUT api/users/:id
+
+Update a specific user matching the given ID.
+
+Not fully implemented.
+
+### DELETE api/users/:id
+
+Delete a specific user matching the given ID.
+
+Not fully implemented.
+
+### GET api/users
+
+Get a list of all users.
+
+Not fully implemented.
+
+### GET api/users/signout
+
+Sign out the current user.
+
+Not fully implemented.
+
+### POST api/users/authenticate
+
+Authenticate a user.
+
+Not fully implemented.
+
+## Forms
+
+### POST api/forms
+
+Create a new form.
+
+Not fully implemented.
+
+### GET api/forms/:id
+
+Get a specific form matching the given ID.
+
+Not fully implemented.
+
+### PUT api/forms/:id
+
+Update a specific form matching the given ID.
+
+Not fully implemented.
+
+### DELETE api/forms/:id
+
+Delete a specific form matching the given ID.
+
+Not fully implemented.
+
+### GET api/forms
+
+Get a list of all forms.
+
+Not fully implemented.
