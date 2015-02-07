@@ -2,6 +2,7 @@
 
 use App\Http\Requests\UserFormRequest;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 
@@ -62,6 +63,14 @@ class UserController extends Controller {
     public function delete($id)
     {
         User::findOrFail($id)->delete();
+    }
+
+    /**
+     * Is the user currently logged in?
+     */
+    public function authCheck()
+    {
+        return response()->json(Auth::check());
     }
 
 }

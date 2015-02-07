@@ -28,6 +28,10 @@ class AppServiceProvider extends ServiceProvider {
             'Illuminate\Contracts\Auth\Registrar',
             'App\Services\Registrar'
         );
+
+        \Blade::setRawTags('<%%', '%%>');
+        \Blade::setContentTags('<%', '%>');
+        \Blade::setEscapedContentTags('<%', '%>');
     }
 
 }

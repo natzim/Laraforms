@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Frontend
+ */
+
+Route::get('/', function ()
+{
+    return view('index');
+});
+
+/**
  * API
  */
 
@@ -36,6 +45,19 @@ Route::group(['prefix' => 'api'], function ()
      * Users
      */
 
+    Route::get(
+        'account/authcheck',
+        'UserController@authCheck'
+    );
+    Route::get(
+        'account/signout',
+        'UserController@signOut'
+    );
+    Route::post(
+        'account/authenticate',
+        'UserController@authenticate'
+    );
+
     Route::post(
         'users',
         'UserController@create'
@@ -55,15 +77,6 @@ Route::group(['prefix' => 'api'], function ()
     Route::get(
         'users',
         'UserController@list'
-    );
-
-    Route::get(
-        'users/signout',
-        'UserController@signOut'
-    );
-    Route::post(
-        'users/authenticate',
-        'UserController@authenticate'
     );
 
 });

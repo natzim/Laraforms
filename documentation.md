@@ -46,13 +46,17 @@ Get a list of all users.
 
 Not fully implemented.
 
-### GET api/users/signout
+### GET api/account/authcheck
+
+Check to see if the user is signed in.
+
+### GET api/account/signout
 
 Sign out the current user.
 
 Not fully implemented.
 
-### POST api/users/authenticate
+### POST api/account/authenticate
 
 Authenticate a user.
 
