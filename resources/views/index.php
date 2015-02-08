@@ -29,10 +29,9 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href=""><i class="fa fa-sign-out"></i> Sign out</a></li>
-
-                <li><a href=""><i class="fa fa-sign-in"></i> Sign in</a></li>
-                <li><a href="">Sign up</a></li>
+                <li data-auth="show"><a href=""><i class="fa fa-sign-out"></i> Sign out</a></li>
+                <li data-auth="hide"><a href=""><i class="fa fa-sign-in"></i> Sign in</a></li>
+                <li data-auth="hide"><a href="">Sign up</a></li>
             </ul>
         </div>
     </div>
