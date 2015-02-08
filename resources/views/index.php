@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="forms">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-controller="TestCtrl as test">
+<body>
 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -29,16 +29,16 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-show="{{ test.isSignedIn }}"><a href=""><i class="fa fa-sign-out"></i> Sign out</a></li>
+                <li><a href=""><i class="fa fa-sign-out"></i> Sign out</a></li>
 
-                <li ng-hide="{{ test.isSignedIn }}"><a href=""><i class="fa fa-sign-in"></i> Sign in</a></li>
-                <li ng-hide="{{ test.isSignedIn }}"><a href="">Sign up</a></li>
+                <li><a href=""><i class="fa fa-sign-in"></i> Sign in</a></li>
+                <li><a href="">Sign up</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div ng-hide="{{ test.isSignedIn }}">
+<div>
     <div class="jumbotron container">
         <h1>Laraforms</h1>
         <p>Laraforms is a simple form and survey creator with minimalism and speed in mind.</p>

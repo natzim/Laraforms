@@ -10,8 +10,6 @@ elixir(function (mix) {
             'bower/bootstrap-material-design/dist/js/material.js',
             'bower/jquery-sortable/source/js/jquery-sortable.js',
             'bower/dropdown.js/jquery.dropdown.js',
-            'bower/angular/angular.js',
-            'bower/angular-bootstrap/ui-bootstrap.js',
             'custom/js/main.js'
         ], 'public/js/app.js', assetsDir)
 

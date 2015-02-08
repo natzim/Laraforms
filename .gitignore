@@ -4,6 +4,7 @@ vendor
 resources/assets/bower/*
 node_modules
 .idea/
+_ide_helper.php
 public/js
 public/css
 public/fonts
