@@ -12,10 +12,6 @@ To be able to install Laraforms, you will need:
 
 - NodeJS and npm
 
-- Bower
-
-- Gulp
-
 ### Method
 
 Clone repository
@@ -23,7 +19,7 @@ Clone repository
 ```
 git clone https://github.com/natzim/Laraforms.git
 
-cd Laraforms
+cd Laraforms/
 ```
 
 Install Laravel and Laravel's dependencies
@@ -35,7 +31,7 @@ composer install
 Install Laravel Elixir
 
 ```
-npm install
+sudo npm install
 ```
 
 Download frontend dependencies
@@ -50,7 +46,7 @@ Run gulp to create public resources
 gulp
 ```
 
-Edit the environment configuration file to match your installation
+Rename the example environment file, then edit the settings to match your needs
 
 ```
 mv .env.example .env
