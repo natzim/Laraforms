@@ -17,7 +17,7 @@ To be able to install Laraforms, you will need:
 Clone repository
 
 ```
-git clone https://github.com/natzim/Laraforms.git
+git clone https://github.com/natzim/Laraforms
 
 cd Laraforms/
 ```
@@ -28,7 +28,7 @@ Install Laravel and Laravel's dependencies
 composer install
 ```
 
-Install Laravel Elixir
+Install node packages (elixir, bower and gulp)
 
 ```
 sudo npm install
@@ -37,13 +37,13 @@ sudo npm install
 Download frontend dependencies
 
 ```
-bower install
+node_modules/bower/bin/bower install
 ```
 
 Run gulp to create public resources
 
 ```
-gulp
+node_modules/gulp/bin/gulp.js
 ```
 
 Rename the example environment file, then edit the settings to match your needs
@@ -52,6 +52,14 @@ Rename the example environment file, then edit the settings to match your needs
 mv .env.example .env
 
 vim .env
+```
+
+If using Laravel Homestead, start Homestead and ssh into it
+
+```
+homestead up
+
+homestead ssh
 ```
 
 Run the migrations
